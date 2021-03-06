@@ -3,6 +3,17 @@ import "./App.css";
 import Blog from "./Blog";
 
 function App() {
+  const payload = {
+    uid: "0001",
+    username: "torahack",
+  };
+
+  const isSignedIn = {
+    isSignedIn:true,
+  };
+
+  console.log({ ...payload ,...isSignedIn});
+
   return (
     <div className="App">
       <header className="App-header">
