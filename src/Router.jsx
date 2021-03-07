@@ -5,8 +5,9 @@ import { Home, Login } from "./templates";
 const Router = () => {
   return (
     <Switch>
-      <Route exact path={"/login"} component={Login} />
-      <Route exact path={"(/)?"} component={Home} />
+      <Route exact path="/login" component={Login} />
+      {/* <Route path="/posts/:id" component={Post} /> */}
+      <Route exact path="(/)?" component={Home} />
       {/* ?をつけることで、/があってもなくても構わない形にすることができる */}
     </Switch>
   );
