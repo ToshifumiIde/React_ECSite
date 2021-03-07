@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export default class Hoge extends React.Component{
-  render(){
-    return <h2>Hogeeeeee!!!!</h2>
+export default class Hoge extends React.Component {
+  render() {
+    return <h2>Hogeeeeee!!!!</h2>;
   }
 }
