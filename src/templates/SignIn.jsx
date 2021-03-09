@@ -47,11 +47,8 @@ const SignIn = () => {
       <div className="module-spacer--medium" />
       <div className={"center"}>
         <PrimaryButton
-          label={"ログイン"}
-          onClick={() =>
-            // dispatch(signUp(username, email, password, confirmPassword))
-            console.log("カウント")
-          }
+          label={"サインイン"}
+          onClick={() => dispatch(signIn(email, password))}
         />
       </div>
     </div>

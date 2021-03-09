@@ -2,26 +2,35 @@ import { signInAction } from "./actions";
 import { push } from "connected-react-router";
 import { auth, db, firebaseTimestamp } from "../../Firebase/index";
 
-export const signIn = () => {
-  return async (dispatch, getState) => {
-    const state = getState();
-    const isSignedIn = state.users.isSignedIn;
-    if (!isSignedIn) {
-      const url = "https://api.github.com/users/deatiger";
-      const response = await fetch(url)
-        .then((res) => res.json())
-        .catch(() => null);
-      const username = response.login;
-      console.log(response);
-      dispatch(
-        signInAction({
-          isSignedIn: true,
-          uid: "torahack",
-          username: username,
-        })
-      );
-      dispatch(push("/")); //サインインした後はHomeに移動するpush()メソッドをdispatch()する
+export const signIn = (email, password) => {
+  return async (dispatch) => {
+    //Validation
+    if (email === "" || password === "") {
+      alert("必要項目が未入力です");
+      return false;
     }
+    return auth.signInWithEmailAndPassword(email, password).then((result) => {
+      const user = result.user;
+      if (user) {
+        const uid = user.uid;
+
+        db.collection("users")
+          .doc(uid)
+          .get()
+          .then((snapshot) => {
+            const data = snapshot.data();
+            dispatch(
+              signInAction({
+                isSignedIn: true,
+                role: data.role,
+                uid: uid,
+                username: data.username,
+              })
+            );
+            dispatch(push("/"));
+          });
+      }
+    });
   };
 };
 
