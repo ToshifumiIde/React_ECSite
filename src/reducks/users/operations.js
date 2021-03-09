@@ -1,5 +1,6 @@
 import { signInAction } from "./actions";
 import { push } from "connected-react-router";
+import { auth, db, firebaseTimestamp } from "../../Firebase/index";
 
 export const signIn = () => {
   return async (dispatch, getState) => {
