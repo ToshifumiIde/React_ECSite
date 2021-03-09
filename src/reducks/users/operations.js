@@ -25,7 +25,7 @@ export const signIn = () => {
   };
 };
 
-export const SignUp = (username, email, password, confirmPassword) => {
+export const signUp = (username, email, password, confirmPassword) => {
   return async (dispatch) => {
     //Validation
     if (
