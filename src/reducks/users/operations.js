@@ -1,4 +1,4 @@
-import { signInAction } from "./actions";
+import { signInAction, signOutAction } from "./actions";
 import { push } from "connected-react-router";
 import { auth, db, firebaseTimestamp } from "../../Firebase/index";
 
@@ -13,7 +13,7 @@ export const listenAuthState = () => {
           .get()
           .then((snapshot) => {
             const data = snapshot.data();
-            
+
             dispatch(
               signInAction({
                 isSignedIn: true,
@@ -100,5 +100,15 @@ export const signUp = (username, email, password, confirmPassword) => {
             .then(dispatch(push("/")));
         }
       });
+  };
+};
+
+export const signOut = () => {
+  return async (dispatch) => {
+    return auth.signOut()//firebaseのsignOut()メソッドを実行
+    .then(() => {
+      dispatch(signOutAction());//reduxの状態もsignOutに変更
+      dispatch(push("/signin"));//pathをsigninに変更
+    });
   };
 };

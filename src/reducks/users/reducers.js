@@ -13,6 +13,10 @@ export const UsersReducer = (state = initialState.users, action) => {
         //uid:action.payload.uid,
         //username:action.payload.username,
       };
+    case Actions.SIGN_OUT:
+      return {
+        ...action.payload,//signoutの状態に全て上書きしてOKなので、...stateとスプレッド構文を用いて既存の状態を展開する必要はない
+      };
     default:
       return state;
   }

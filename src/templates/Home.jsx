@@ -3,7 +3,8 @@ import { getUserId } from "../reducks/users/selectors";
 import { getUserName } from "../reducks/users/selectors";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { push } from "connected-react-router";
+// import { push } from "connected-react-router";
+import { signOut } from "../reducks/users/operations";
 
 const Home = () => {
   //store全体のstateをselectorとして取得する
@@ -17,9 +18,7 @@ const Home = () => {
       <h2>Home</h2>
       <p>ユーザーID：{uid}</p>
       <p>ユーザー名：{username}</p>
-      <button onClick={() => dispatch(push("/signin"))}>
-        ログイン画面に移動
-      </button>
+      <button onClick={() => dispatch(signOut())}>サインアウト</button>
     </>
   );
 };
