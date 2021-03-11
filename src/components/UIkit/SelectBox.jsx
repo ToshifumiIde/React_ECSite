@@ -3,21 +3,31 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { makeStyles } from "@material-ui/styles";
+
+const useStyles = makeStyles({
+  formControl: {
+    marginBottom: 16,
+    minWidth: 128,
+    width: "100%",
+  },
+});
 
 const SelectBox = (props) => {
+  const classes = useStyles();
   return (
-    <FormControl>
+    <FormControl className={classes.formControl}>
       <InputLabel>{props.label}</InputLabel>
       {/* カテゴリの選択肢 */}
       <Select
         required={props.required}
         value={props.value}
-        onCHange={(e) => {
+        onChange={(e) => {
           props.select(e.target.value);
         }}
       >
         {props.options.map((option) => (
-          <MenuItem key={props.id} value={option.id}>
+          <MenuItem key={option.id} value={option.id}>
             {option.name}
           </MenuItem>
         ))}
