@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { TextInput } from "../components/UIkit";
+import { TextInput , SelectBox } from "../components/UIkit";
 
 const ProductEdit = () => {
   const [name, setName] = useState(""),
