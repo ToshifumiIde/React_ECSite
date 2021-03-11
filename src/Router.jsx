@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router";
 import { Home, Login , SignUp, SignIn } from "./templates";
+import Auth from "./Auth";
 // import SignUp from "./templates/SignUp";
 
 const Router = () => {
@@ -10,7 +11,9 @@ const Router = () => {
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/signin" component={SignIn} />
       {/* <Route path="/posts/:id" component={Post} /> */}
+      <Auth>
       <Route exact path="(/)?" component={Home} />
+      </Auth>
       {/* ?をつけることで、/があってもなくても構わない形にすることができる */}
     </Switch>
   );
