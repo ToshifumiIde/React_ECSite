@@ -105,10 +105,29 @@ export const signUp = (username, email, password, confirmPassword) => {
 
 export const signOut = () => {
   return async (dispatch) => {
-    return auth.signOut()//firebaseのsignOut()メソッドを実行
-    .then(() => {
-      dispatch(signOutAction());//reduxの状態もsignOutに変更
-      dispatch(push("/signin"));//pathをsigninに変更
-    });
+    return auth
+      .signOut() //firebaseのsignOut()メソッドを実行
+      .then(() => {
+        dispatch(signOutAction()); //reduxの状態もsignOutに変更
+        dispatch(push("/signin")); //pathをsigninに変更
+      });
+  };
+};
+
+export const resetPassword = (email) => {
+  return async (dispatch) => {
+    if (email === "") {
+      alert("メールアドレスを入力してください");
+    } else {
+      auth
+        .sendPasswordResetEmail(email)
+        .then(() => {
+          alert("入力されたメールアドレスにパスワードを送りました");
+          dispatch(push("/signin"));
+        })
+        .catch((err) => {
+          alert("パスワードリセットに失敗しました");
+        });
+    }
   };
 };
