@@ -22,7 +22,7 @@ export const listenAuthState = () => {
                 username: data.username,
               })
             ); //reduxの状態を更新
-            dispatch(push("/")); //アプリのルートページへ飛ばす
+            // dispatch(push("/")); //アプリのルートページへ飛ばす
           });
       } else {
         dispatch(push("/signin"));

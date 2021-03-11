@@ -1,20 +1,19 @@
 import React from "react";
 import { Switch, Route } from "react-router";
-import { Home, Login , SignUp, SignIn , Reset} from "./templates";
+import { Home, SignUp, SignIn, Reset, ProductEdit } from "./templates";
 import Auth from "./Auth";
-// import SignUp from "./templates/SignUp";
 
 const Router = () => {
   return (
     <Switch>
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/signin" component={SignIn} />
-      <Route exact pass="/signin/reset" component={Reset} />
-      {/* <Route path="/posts/:id" component={Post} /> */}
+      <Route exact path={"/signup"} component={SignUp} />
+      <Route exact path={"/signin"} component={SignIn} />
+      <Route exact path={"/signin/reset"} component={Reset} />
       <Auth>
-      <Route exact path="(/)?" component={Home} />
+        <Route exact path={"(/)?"} component={Home} />
+        <Route exact path={"/product/edit"} component={ProductEdit} />
       </Auth>
+
       {/* ?をつけることで、/があってもなくても構わない形にすることができる */}
     </Switch>
   );
