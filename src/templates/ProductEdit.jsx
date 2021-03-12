@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { TextInput , SelectBox } from "../components/UIkit";
+import { TextInput, SelectBox, PrimaryButton } from "../components/UIkit";
 
 const ProductEdit = () => {
   const [name, setName] = useState(""),
@@ -28,10 +28,15 @@ const ProductEdit = () => {
   );
 
   const categories = [
-    {id:"tops",name:"トップス"},
-    {id:"shirts",name:"シャツ"},
-    {id:"pants",name:"パンツ"}
-  ]
+    { id: "tops", name: "トップス" },
+    { id: "shirts", name: "シャツ" },
+    { id: "pants", name: "パンツ" },
+  ];
+  const genders = [
+    { id: "all", name: "全て" },
+    { id: "male", name: "メンズ" },
+    { id: "female", name: "レディース" },
+  ];
 
   return (
     <section>
@@ -65,6 +70,14 @@ const ProductEdit = () => {
           select={setCategory}
           value={category}
         />
+        <SelectBox
+          fullWidth={true}
+          label={"性別"}
+          required={true}
+          options={genders}
+          select={setGender}
+          value={gender}
+        />
         <TextInput
           fullWidth={true}
           label={"価格"}
@@ -75,6 +88,13 @@ const ProductEdit = () => {
           value={price}
           type={"number"}
         />
+        <div className="module-spacer--medium" />
+        <div className="center">
+          <PrimaryButton 
+          label={"商品情報を保存"} 
+          // onClick={} 
+        />
+        </div>
       </div>
     </section>
   );
