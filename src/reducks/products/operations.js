@@ -1,11 +1,11 @@
-import { firebaseTimestamp, db } from "../../Firebase";
+import { FirebaseTimestamp, db } from "../../Firebase";
 import { push } from "connected-react-router";
 
 const productsRef = db.collection("products");
 
 export const saveProduct = (name, description, category, gender, price) => {
   return async (dispatch) => {
-    const timestamp = firebaseTimestamp.now(); //現在時刻の取得
+    const timestamp = FirebaseTimestamp.now(); //現在時刻の取得
     const data = {
       category: category,
       description: description,
@@ -23,8 +23,10 @@ export const saveProduct = (name, description, category, gender, price) => {
     return productsRef
       .doc(id)
       .set(data)
-      .then(push("/"))
-      .catch((error) => {
+      .then(() => {
+        dispatch(push("/"));
+      }).catch((error) => {
+        console.log(error);
         throw new Error(error);
       });
     //生成したidとdataをfirebaseのdoc()メソッドとset()メソッドに各々格納

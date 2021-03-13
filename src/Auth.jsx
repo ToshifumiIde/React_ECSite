@@ -16,7 +16,8 @@ const Auth = ({ children }) => {
   if (!isSignedIn) {
     return <></>;
   } else {
-    return children; //Authの子要素(<Route exact path={"(/)?"} component={Home}> /)を返却
+    return children; 
+    //Authの子要素(<Route exact path={"(/)?"} component={Home}> /)を返却
   }
 };
 

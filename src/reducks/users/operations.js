@@ -1,6 +1,6 @@
 import { signInAction, signOutAction } from "./actions";
 import { push } from "connected-react-router";
-import { auth, db, firebaseTimestamp } from "../../Firebase/index";
+import { auth, db, FirebaseTimestamp } from "../../Firebase/index";
 
 export const listenAuthState = () => {
   return async (dispatch) => {
@@ -85,7 +85,7 @@ export const signUp = (username, email, password, confirmPassword) => {
         const user = result.user;
         if (user) {
           const uid = user.uid;
-          const timestamp = firebaseTimestamp.now();
+          const timestamp = FirebaseTimestamp.now();
           const userInitialData = {
             created_at: timestamp,
             email: email,
