@@ -47,7 +47,7 @@ const ProductEdit = () => {
     <section>
       <h2 className="u-text__headline u-text-center">商品の登録・編集</h2>
       <div className="c-section-container">
-        <ImageArea images={images} setImages={setImages}/>
+        <ImageArea images={images} setImages={setImages} />
         <TextInput
           fullWidth={true}
           label={"商品名"}
@@ -99,7 +99,9 @@ const ProductEdit = () => {
           <PrimaryButton
             label={"商品情報を保存"}
             onClick={() =>
-              dispatch(saveProduct(name, description, category, gender, price))
+              dispatch(
+                saveProduct(name, description, category, gender, images, price)
+              )
             }
           />
         </div>

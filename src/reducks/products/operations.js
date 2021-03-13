@@ -3,13 +3,21 @@ import { push } from "connected-react-router";
 
 const productsRef = db.collection("products");
 
-export const saveProduct = (name, description, category, gender, price) => {
+export const saveProduct = (
+  name,
+  description,
+  category,
+  gender,
+  price,
+  images
+) => {
   return async (dispatch) => {
     const timestamp = FirebaseTimestamp.now(); //現在時刻の取得
     const data = {
       category: category,
       description: description,
       gender: gender,
+      images: images,
       name: name,
       price: parseInt(price, 10),
       //文字列で受け取ったデータを10進数の整数に変換
@@ -25,7 +33,8 @@ export const saveProduct = (name, description, category, gender, price) => {
       .set(data)
       .then(() => {
         dispatch(push("/"));
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
         throw new Error(error);
       });
